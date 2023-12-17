@@ -42,3 +42,16 @@ function isAnagram(s: string, t: string): boolean {
 
   return freqArray.every((value) => value === 0);
 }
+
+//Solution 3: 52ms 44.57 MB
+function isAnagram(s: string, t: string): boolean {
+  if (s.length !== t.length) return false;
+  const freqArray = new Array(26).fill(0);
+
+  for (let i = 0; i < s.length; i++) {
+    freqArray[s[i].charCodeAt(0) - 97] += 1;
+    freqArray[t[i].charCodeAt(0) - 97] -= 1;
+  }
+
+  return freqArray.every((value) => value === 0);
+}
